@@ -33,9 +33,9 @@ class Question(object):
 	def ask_and_evaluate(self):
 		guess = raw_input(self.question + " ")
 		if guess == self.correct_answer:
-			print True
+			return True
 		else:
-			print False
+			return False
 
 class Exam(object):
 	questions = []
@@ -49,14 +49,13 @@ class Exam(object):
 	def administer(self):
 		score = 0
 		for question in self.questions:
-			Question.ask_and_evaluate(question)
-			#this seems weird to me-- I wanted to just do "if Question.ask_and_evaluate:" "score +=1" but that refused to work for me
-			if True: 
+			if Question.ask_and_evaluate(question): 
 				score += 1
 		return score
 
 def take_test(exam, student):
-	pass
+	student.score = Exam.administer(exam)
+	return student.score
 
 
 
