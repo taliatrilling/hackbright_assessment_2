@@ -104,8 +104,6 @@ def get_sum_zero_pairs(numbers):
 
     return zero_pairs
 
-
-
 def top_chars(phrase):
     """Find most common character(s) in string.
 
