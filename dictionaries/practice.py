@@ -91,7 +91,19 @@ def get_sum_zero_pairs(numbers):
         [[-1, 1], [0, 0]]
     """
 
-    return []
+    zero_pairs = set()
+    for i in range(len(numbers)):
+        for x in range(len(numbers)):
+            if numbers[i] + numbers[x] == 0:
+                if (numbers[x], numbers[i]) in zero_pairs:
+                    break
+                else:
+                    pair = (numbers[i], numbers[x])
+                    zero_pairs.add(pair)
+                    break
+
+    return zero_pairs
+
 
 
 def top_chars(phrase):
@@ -118,8 +130,21 @@ def top_chars(phrase):
     Do not count spaces, but count all other characters.
 
     """
+    char_count = {}
+    for char in phrase:
+        char_count[char] = char_count.get(char, 0) + 1
+    del char_count[" "]
+    top_char = []
+    top_num = 0
+    for value in char_count.values():
+        if value >= top_num:
+            top_num = value
+    for key, value in char_count.items():
+        if value == top_num:
+            top_char.append(key)
+    top_char.sort()
+    return top_char
 
-    return []
 
 #####################################################################
 # You can ignore everything below this.
