@@ -51,13 +51,16 @@ Part 1: Discussion
 """
 
 class Student(object):
-	""" """
+	"""A student and their associated information"""
+	
 	def __init__(self, first_name, last_name, address):
 		self.first_name = first_name
 		self.last_name = last_name
 		self.address = address	
 
 class Question(object):
+	"""A question for an exam or quiz with its associated correct answer"""
+
 	def __init__(self, question, correct_answer):
 		self.question = question
 		self.correct_answer = correct_answer
@@ -70,7 +73,8 @@ class Question(object):
 			return False
 
 class Exam(object):
-	""" """
+	"""An exam with a series of questions and associated answers that can be administered"""
+
 	questions = []
 	def __init__(self, name):
 		self.name = name
@@ -87,7 +91,8 @@ class Exam(object):
 		return score
 
 class Quiz(Exam):
-	""" """
+	"""An exam that is passed when at least half of its answers are correct"""
+
 	def add_question(self, question, correct_answer):
 		super(Quiz, self).add_question(question, correct_answer)
 
@@ -99,12 +104,15 @@ class Quiz(Exam):
 			return False
 
 def take_test(exam, student):
-	""" """
+	"""A function that administers an exam and associates the score with a particular student"""
+
 	student.score = Exam.administer(exam)
 	return student.score
 
 def example():
-	""" """
+	"""Creates an instance of an exam with a few sample questions, an instance of a student to take it,
+	and then calls the take_test function to administer that exam to that particular student"""
+
 	exam = Exam("Example Exam")
 	exam.add_question("What is love?", "baby don't hurt me, don't hurt me, no more")
 	exam.add_question("What is the best programming language?", "python, duh")
